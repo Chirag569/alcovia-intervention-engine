@@ -1,0 +1,175 @@
+📌 README — Alcovia Intervention Engine Prototype
+
+A Closed-Loop Intervention System connecting:
+
+✔ Student Web App (Expo Web + React Native)
+✔ Backend Server (Node.js + SQL Database on Supabase)
+✔ Automation Workflow (n8n Cloud)
+
+This system enforces Digital Rigour to ensure students stay on track with learning — automatically detecting poor performance, locking the student interface, notifying a mentor, and unlocking only upon mentor approval.
+
+🚀 1️⃣ Live Demo Links
+Component	Status	URL
+🎯 Student Focus Web App	✅ Live	🔗 https://your-deployed-frontend-link.com
+
+⚙️ Backend API (Swagger / Direct Link)	Live	🔗 https://your-backend-domain.com
+
+🤖 n8n Workflow	View Screenshot	📎 Below in README
+🧠 2️⃣ System Architecture
+(Student App) → POST /daily-checkin
+    ↓ Bad Score
+(Backend Updates DB & Triggers n8n)
+    ↓
+n8n Notification → Mentor
+ WAIT for action
+    ↓
+n8n → POST /assign-intervention
+    ↓
+Unlock Student with Remedial Task
+
+
+✔ SQL used (Supabase Postgres)
+✔ Human-in-loop intervention enforced
+✔ Real-time UI state changes
+
+🧩 3️⃣ Tech Stack
+Layer	Technology
+Frontend	React Native + Expo Web
+Backend	Node.js + Express
+Database	Supabase Postgres
+Automation	n8n Cloud
+Deployment	Vercel (Frontend) + Render/Other (Backend)
+📊 4️⃣ Database Schema
+students
+Column	Type	Description
+id	UUID	Primary key
+name	Text	Student name
+status	Enum(normal, locked, remedial)	UI state
+daily_logs
+Column	Type
+id	UUID
+student_id	FK → students.id
+quiz_score	Integer
+focus_minutes	Integer
+created_at	Timestamp
+interventions
+Column	Type
+id	UUID
+student_id	FK
+task	Text
+status	Enum(assigned, completed)
+🔌 5️⃣ Backend Endpoints
+➤ POST /daily-checkin
+
+Request:
+
+{
+  "student_id": "123",
+  "quiz_score": 4,
+  "focus_minutes": 30
+}
+
+
+Logic:
+
+Condition	Response	DB Update	Action
+quiz_score > 7 && focus_minutes > 60	{ status: "On Track" }	Normal	No webhook
+Else	{ status: "Pending Mentor Review" }	Locked	Trigger n8n webhook
+➤ POST /assign-intervention
+
+Triggered by Mentor via n8n
+
+Body:
+
+{
+  "student_id": "123",
+  "task": "Read Chapter 4"
+}
+
+
+Effects:
+✔ DB: Set status = remedial
+✔ Student UI updates automatically
+
+📱 6️⃣ Student App UI States
+State	Trigger	UI Behavior
+Normal	Good input	Timer + Quiz available
+Locked	Poor performance	Everything disabled → Show "Waiting for Mentor..."
+Remedial	Mentor assigns task	Show only remediation task
+Completion	Student finished task	Back to Normal
+🔁 Closed Loop Flow Demo (Screenshots)
+
+📌 Replace these with your actual images
+
+📍 App Normal State
+📎 assets/screenshots/normal.PNG
+
+📍 Locked State
+📎 assets/screenshots/locked.png
+
+📍 Remedial State
+📎 assets/screenshots/remedial.png
+
+📍 n8n Workflow Execution
+📎 assets/screenshots/n8n.png
+
+🤖 7️⃣ n8n Automation Workflow
+
+Workflow Actions:
+1️⃣ Trigger: Webhook from Backend
+2️⃣ Sends Email to Mentor (You)
+3️⃣ Waits for Approval Button Click
+4️⃣ On Click → Calls /assign-intervention
+
+🗂 Export JSON stored in repo:
+📎 ./n8n/export.json
+
+🧯 8️⃣ Fail-Safe Strategy (System Design)
+
+🛑 Chaos Condition:
+Mentor does not respond → Student locked forever ❌
+
+💡 Fail-Safe Mechanism Implemented
+
+When student enters locked state:
+→ A lock_timestamp is stored
+
+CRON job checks every hour:
+→ If locked for more than 12 hours
+→ Auto-unlock to remedial mode
+→ Escalation email → Head Mentor
+
+Ensures system never deadlocks.
+
+⭐ Bonus Feature Implemented
+
+✔ Cheating Detection (Browser Tab Switch Monitoring)
+If student leaves tab during Focus Timer → auto failure + locked state
+
+This shows product-first thinking ✨
+
+🛠 Commands (Development + Build)
+Install
+cd server && npm install
+cd ../frontend && npm install
+
+Run Locally
+npm run dev
+
+Deploy Web
+npm run build:web
+npx vercel --prod
+
+🧪 Testing Scenarios
+Scenario	Expected Output
+Submit Good Score	App remains in Normal state
+Bad Score	Locked state + Mentor Email
+Mentor Approves Task	UI shows Remedial Task
+Task_completion	Normal state restored
+
+
+🎥 Loom Video (5 min)
+
+🔗 Add your Loom video link here
+
+
