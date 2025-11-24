@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Alcovia Intervention Engine",
+    "slug": "alcovia-intervention-engine",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f172a"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "n",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f172a"
+      },
+      "package": "com.chirag_1209.alcoviainterventionengine"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "scheme": "alcovia",
+    "extra": {
+      "eas": {
+        "projectId": "4c357125-31a3-44ad-96d9-08a9e1f50776"
+      }
+    },
+    "owner": "chirag_1209",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4c357125-31a3-44ad-96d9-08a9e1f50776"
+    }
+  }
+}
