@@ -38,7 +38,7 @@ Frontend	React Native + Expo Web
 Backend	Node.js + Express
 Database	Supabase Postgres
 Automation	n8n Cloud
-Deployment	Vercel (Frontend) + Render/Other (Backend)
+Deployment	Vercel (Frontend) + Vercel (Backend)
 📊 4️⃣ Database Schema
 students
 Column	Type	Description
@@ -102,16 +102,16 @@ Completion	Student finished task	Back to Normal
 📌 Replace these with your actual images
 
 📍 App Normal State
-📎 assets/screenshots/normal.PNG
+📎 .assets/screenshots/normal.PNG
 
 📍 Locked State
-📎 assets/screenshots/locked.png
+📎 .assets/screenshots/locked.PNG
 
 📍 Remedial State
-📎 assets/screenshots/remedial.png
+📎 .assets/screenshots/remedial.PNG
 
 📍 n8n Workflow Execution
-📎 assets/screenshots/n8n.png
+📎 .assets/screenshots/n8n.PNG
 
 🤖 7️⃣ n8n Automation Workflow
 
