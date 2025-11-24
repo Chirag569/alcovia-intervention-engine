@@ -10,9 +10,9 @@ This system enforces Digital Rigour to ensure students stay on track with learni
 
 🚀 1️⃣ Live Demo Links
 Component	Status	URL
-🎯 Student Focus Web App	✅ Live	🔗 https://your-deployed-frontend-link.com
+🎯 Student Focus Web App	✅ Live	🔗 https://alcovia-gamma.vercel.app/
 
-⚙️ Backend API (Swagger / Direct Link)	Live	🔗 https://your-backend-domain.com
+⚙️ Backend API (Vercel/ Direct Link)	Live	🔗 https://alcovia-api.vercel.app/
 
 🤖 n8n Workflow	View Screenshot	📎 Below in README
 🧠 2️⃣ System Architecture
@@ -168,8 +168,6 @@ Mentor Approves Task	UI shows Remedial Task
 Task_completion	Normal state restored
 
 
-🎥 Loom Video (5 min)
 
-🔗 Add your Loom video link here
 
 
