@@ -99,19 +99,18 @@ Remedial	Mentor assigns task	Show only remediation task
 Completion	Student finished task	Back to Normal
 🔁 Closed Loop Flow Demo (Screenshots)
 
-📌 Replace these with your actual images
+📍 App Normal State  
+![Normal State](./assets/screenshots/normal.PNG)
 
-📍 App Normal State
-📎 ![Normal State](./assets/screenshots/normal.PNG)
+📍 Locked State  
+![Locked State](./assets/screenshots/locked.PNG)
 
-📍 Locked State
-📎 ![Locked State](./assets/screenshots/locked.PNG)
+📍 Remedial State  
+![Remedial State](./assets/screenshots/remedial.PNG)
 
-📍 Remedial State
-📎 ![Remedial State](./assets/screenshots/remedial.PNG)
+📍 n8n Workflow Execution  
+![n8n Workflow Execution](./assets/screenshots/n8n.PNG)
 
-📍 n8n Workflow Execution
-📎 ![n8n Workflow Execution](./assets/screenshots/n8n.PNG)
 
 🤖 7️⃣ n8n Automation Workflow
 
